@@ -31,12 +31,15 @@ def add_resume():
     if not (full_name and address and job_title):
         print("Required fields missing.")
         return
+        
     if not (18 <= age <= 70):
         print("Invalid age.")
         return
+        
     if not validate_phone(phone):
         print("Invalid phone format.")
         return
+        
     if not validate_email(email):
         print("Invalid email.")
         return
@@ -56,6 +59,8 @@ def add_resume():
         cursor.execute("INSERT INTO experience (resume_id, job_title, company, years) VALUES (%s, %s, %s, %s)",
                        (resume_id, job, company, years))
 
+
+    
     print("\nEnter Education (leave degree blank to stop):")
     while True:
         degree = input("Degree: ")
@@ -68,6 +73,10 @@ def add_resume():
     skills = input("Skills (comma-separated): ").split(",")
     for skill in skills:
         cursor.execute("INSERT INTO skills (resume_id, skill) VALUES (%s, %s)", (resume_id, skill.strip()))
+
+
+
+    
 
     conn.commit()
     cursor.close()
@@ -124,3 +133,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
