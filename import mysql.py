@@ -5,7 +5,7 @@ def connect_db():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="",  # Update if needed
+        password="", 
         database="resume_db"
     )
 
@@ -122,4 +122,5 @@ def main():
             print("Invalid choice. Try again.")
 
 if __name__ == "__main__":
+
     main()
